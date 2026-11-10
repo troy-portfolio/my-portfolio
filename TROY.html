@@ -1,0 +1,1107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Troy Zydel E. Pangaluan, a third-year BSIT student.">
+    <title>Troy Zydel E. Pangaluan | Portfolio</title>
+
+    <style>
+        /* ===== GENERAL STYLES ===== */
+        :root {
+            --bg: #06111f;
+            --card: #0d1b2d;
+            --card-light: #12243a;
+            --text: #edf6ff;
+            --muted: #a8b8ca;
+            --accent: #00e5df;
+            --border: rgba(0, 205, 230, 0.22);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 85% 15%,
+                    rgba(0, 229, 223, 0.10), transparent 28rem),
+                var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+       
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(6, 17, 31, 0.96);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            max-width: 1150px;
+            min-height: 75px;
+            margin: auto;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .nav-link {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid transparent;
+            padding: 9px 13px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent);
+            background: rgba(0, 229, 223, 0.08);
+            border-color: rgba(0, 229, 223, 0.25);
+        }
+
+       
+        main {
+            max-width: 1150px;
+            margin: auto;
+            padding: 45px 25px 70px;
+            min-height: 75vh;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page[hidden] {
+            display: none !important;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 5.5vw, 66px);
+            line-height: 1.13;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: clamp(32px, 4vw, 45px);
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            color: var(--muted);
+        }
+
+        .accent {
+            color: var(--accent);
+        }
+
+        .section-heading {
+            max-width: 720px;
+            margin-bottom: 35px;
+        }
+
+        .section-heading p {
+            margin-top: 12px;
+        }
+
+ 
+        .hero {
+            min-height: 65vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 45px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--accent);
+        }
+
+        .hero-description {
+            max-width: 650px;
+            font-size: 18px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--accent);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            color: #06151b;
+            background: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: #80fffa;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            color: var(--accent);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 229, 223, 0.10);
+            transform: translateY(-3px);
+        }
+
+       
+        .profile-card {
+            text-align: center;
+            background: linear-gradient(
+                145deg,
+                var(--card-light),
+                var(--card)
+            );
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.25);
+        }
+
+        .avatar {
+            width: 250px;
+            height: 250px;
+            max-width: 100%;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--accent);
+            box-shadow:
+                0 0 20px rgba(0, 229, 223, 0.45),
+                0 0 45px rgba(0, 110, 255, 0.15);
+            background: #12243a;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .profile-card p {
+            margin-top: 8px;
+        }
+
+        .profile-details {
+            display: grid;
+            gap: 12px;
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        .profile-details div {
+            display: grid;
+            grid-template-columns: 85px 1fr;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .profile-details strong {
+            color: var(--text);
+        }
+
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: rgba(13, 27, 45, 0.9);
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 27px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: rgba(0, 229, 223, 0.5);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: rgba(0, 229, 223, 0.1);
+            color: var(--accent);
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .card p + p {
+            margin-top: 14px;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .info-list li {
+            margin-bottom: 15px;
+            color: var(--muted);
+        }
+
+        .info-list strong {
+            display: block;
+            color: var(--text);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .skill-card {
+            padding: 23px;
+        }
+
+        .skill-card p {
+            font-size: 14px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            margin: 9px 5px 0 0;
+            padding: 5px 10px;
+            border-radius: 7px;
+            color: #c6fff8;
+            background: rgba(0, 229, 223, 0.08);
+            border: 1px solid rgba(0, 229, 223, 0.2);
+            font-size: 12px;
+        }
+
+        /* ===== PROJECTS PAGE ===== */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 230px;
+        }
+
+        .project-type {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .project-card p:not(.project-type) {
+            flex: 1;
+        }
+
+        .note {
+            margin-top: 25px;
+            font-size: 13px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-icon {
+            color: var(--accent);
+            font-size: 21px;
+            min-width: 28px;
+            text-align: center;
+        }
+
+        .contact-item strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .contact-item a {
+            color: var(--muted);
+            overflow-wrap: anywhere;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .contact-message {
+            margin-top: 15px;
+        }
+
+        footer {
+            max-width: 1150px;
+            margin: auto;
+            padding: 25px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        footer span {
+            color: var(--accent);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 800px) {
+            .navbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 25px 0;
+            }
+
+            .profile-card {
+                max-width: 550px;
+                width: 100%;
+                margin: auto;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            main {
+                padding: 30px 17px 50px;
+            }
+
+            .navbar {
+                padding: 15px 17px;
+            }
+
+            .nav-links {
+                gap: 4px;
+            }
+
+            .nav-link {
+                padding: 8px 9px;
+                font-size: 13px;
+            }
+
+            .grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card,
+            .profile-card {
+                padding: 22px;
+            }
+
+            .avatar {
+                width: 210px;
+                height: 210px;
+            }
+
+            footer {
+                padding: 20px 17px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="#home" class="logo" data-page-link="home">
+                TROY<span>.</span>
+            </a>
+
+            <div class="nav-links">
+                <button class="nav-link active" data-page="home">
+                    Home
+                </button>
+
+                <button class="nav-link" data-page="about">
+                    About
+                </button>
+
+                <button class="nav-link" data-page="skills">
+                    Skills
+                </button>
+
+                <button class="nav-link" data-page="projects">
+                    Projects
+                </button>
+
+                <button class="nav-link" data-page="contact">
+                    Contact
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        
+        <section class="page active" id="home">
+            <div class="hero">
+
+                <div class="hero-content">
+                    <p class="eyebrow">
+                        Hello, welcome to my portfolio!
+                    </p>
+
+                    <h1>
+                        I'm Troy Zydel E.
+                        <span>Pangaluan</span>
+                    </h1>
+
+                    <h3>BSIT 3rd Year Student</h3>
+
+                    <p class="hero-description">
+                        I am an aspiring IT professional passionate about
+                        technology, programming, and web development.
+                        I enjoy learning new skills and creating digital
+                        solutions that can help people.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <button
+                            class="btn btn-primary"
+                            data-go="about">
+                            Learn More About Me →
+                        </button>
+
+                        <button
+                            class="btn btn-outline"
+                            data-go="contact">
+                            Contact Me ✉
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PROFILE PHOTO -->
+                <div class="profile-card">
+
+                    <div class="avatar">
+                        <img
+                            src="troy.png"
+                            alt="Portrait of Troy Zydel E. Pangaluan"
+                            onerror="this.onerror=null; this.src='profile.png';">
+                    </div>
+
+                    <p class="eyebrow">Student Portfolio</p>
+
+                    <h3>Troy Zydel E. Pangaluan</h3>
+
+                    <p>BS Information Technology</p>
+
+                    <div class="profile-details">
+                        <div>
+                            <strong>Course</strong>
+                            <span>BS Information Technology</span>
+                        </div>
+
+                        <div>
+                            <strong>Year Level</strong>
+                            <span>Third-Year Student</span>
+                        </div>
+
+                        <div>
+                            <strong>Interest</strong>
+                            <span>Web Development</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="page" id="about" hidden>
+
+            <div class="section-heading">
+                <p class="eyebrow">Get to know me</p>
+
+                <h2>About <span class="accent">Me</span></h2>
+
+                <p>
+                    Learn more about my background, education,
+                    interests, and goals.
+                </p>
+            </div>
+
+            <div class="grid">
+
+                <article class="card">
+                    <div class="card-icon">♙</div>
+
+                    <h3>Who I Am</h3>
+
+                    <p>
+                        My name is Troy Zydel E. Pangaluan, and I am a
+                        third-year Bachelor of Science in Information
+                        Technology (BSIT) student.
+                    </p>
+
+                    <p>
+                        I am interested in programming, website design,
+                        database management, and modern technologies.
+                        I enjoy learning new skills and improving my
+                        technical and problem-solving abilities.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">◎</div>
+
+                    <h3>My Goals</h3>
+
+                    <p>
+                        My goal is to become a skilled IT professional
+                        and develop useful digital solutions in the future.
+                    </p>
+
+                    <ul class="info-list">
+                        <li>
+                            <strong>Full Name</strong>
+                            Troy Zydel E. Pangaluan
+                        </li>
+
+                        <li>
+                            <strong>Course</strong>
+                            Bachelor of Science in Information Technology
+                        </li>
+
+                        <li>
+                            <strong>Year Level</strong>
+                            Third Year
+                        </li>
+
+                        <li>
+                            <strong>Location</strong>
+                            Inalad, Siaton, Negros Oriental
+                        </li>
+                    </ul>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="page" id="skills" hidden>
+
+            <div class="section-heading">
+                <p class="eyebrow">What I am learning</p>
+
+                <h2>My <span class="accent">Skills</span></h2>
+
+                <p>
+                    Here are some technical and personal skills
+                    I am developing as an IT student.
+                </p>
+            </div>
+
+            <div class="skills-grid">
+
+                <article class="card skill-card">
+                    <div class="card-icon">⌘</div>
+
+                    <h3>HTML</h3>
+
+                    <p>
+                        Creating the structure and content of websites.
+                    </p>
+
+                    <span class="skill-tag">Web Structure</span>
+                </article>
+
+                <article class="card skill-card">
+                    <div class="card-icon">✦</div>
+
+                    <h3>CSS</h3>
+
+                    <p>
+                        Styling website layouts, colors, and responsive
+                        designs.
+                    </p>
+
+                    <span class="skill-tag">Web Design</span>
+                </article>
+
+                <article class="card skill-card">
+                    <div class="card-icon">JS</div>
+
+                    <h3>JavaScript</h3>
+
+                    <p>
+                        Adding interactive features and behavior
+                        to websites.
+                    </p>
+
+                    <span class="skill-tag">Interactivity</span>
+                </article>
+
+                <article class="card skill-card">
+                    <div class="card-icon">▤</div>
+
+                    <h3>Database Basics</h3>
+
+                    <p>
+                        Understanding how information is stored,
+                        organized, and managed.
+                    </p>
+
+                    <span class="skill-tag">SQL Concepts</span>
+                </article>
+
+                <article class="card skill-card">
+                    <div class="card-icon">⚙</div>
+
+                    <h3>Problem Solving</h3>
+
+                    <p>
+                        Analyzing tasks and exploring practical
+                        ways to solve problems.
+                    </p>
+
+                    <span class="skill-tag">Critical Thinking</span>
+                </article>
+
+                <article class="card skill-card">
+                    <div class="card-icon">⇄</div>
+
+                    <h3>Teamwork</h3>
+
+                    <p>
+                        Sharing ideas, communicating, and working
+                        toward common goals.
+                    </p>
+
+                    <span class="skill-tag">Collaboration</span>
+                </article>
+
+            </div>
+
+            <p class="note">
+                Customize this list to match the skills you have
+                actually learned and practiced.
+            </p>
+
+        </section>
+
+     
+        <section class="page" id="projects" hidden>
+
+            <div class="section-heading">
+                <p class="eyebrow">My work</p>
+
+                <h2>My <span class="accent">Projects</span></h2>
+
+                <p>
+                    This section showcases projects and activities
+                    related to my studies in information technology.
+                </p>
+            </div>
+
+            <div class="grid">
+
+                <article class="card project-card">
+                    <p class="project-type">Web Development</p>
+
+                    <h3>Personal Portfolio Website</h3>
+
+                    <p>
+                        A personal website that introduces me,
+                        displays my skills, and provides contact
+                        information.
+                    </p>
+
+                    <div>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </article>
+
+                <article class="card project-card">
+                    <p class="project-type">Academic Project</p>
+
+                    <h3>Student Information System</h3>
+
+                    <p>
+                        A sample concept for organizing student
+                        information and academic records.
+                    </p>
+
+                    <div>
+                        <span class="skill-tag">Web Development</span>
+                        <span class="skill-tag">Database</span>
+                    </div>
+                </article>
+
+                <article class="card project-card">
+                    <p class="project-type">Productivity</p>
+
+                    <h3>Task Management System</h3>
+
+                    <p>
+                        A sample concept for managing tasks,
+                        organizing activities, and tracking progress.
+                    </p>
+
+                    <div>
+                        <span class="skill-tag">UI Design</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </article>
+
+                <article class="card project-card">
+                    <p class="project-type">Learning Project</p>
+
+                    <h3>Responsive Web Page</h3>
+
+                    <p>
+                        A website layout designed to adjust to
+                        different screen sizes, including phones,
+                        tablets, and computers.
+                    </p>
+
+                    <div>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                    </div>
+                </article>
+
+            </div>
+
+            <p class="note">
+                These are sample project descriptions. Replace them
+                with your actual projects and add links or screenshots
+                when available.
+            </p>
+
+        </section>
+
+        <!-- ===== CONTACT PAGE ===== -->
+        <section class="page" id="contact" hidden>
+
+            <div class="section-heading">
+                <p class="eyebrow">Let's connect</p>
+
+                <h2>Contact <span class="accent">Me</span></h2>
+
+                <p>
+                    Feel free to contact me for collaboration,
+                    school projects, or learning opportunities.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+
+                <article class="card">
+                    <h3>Contact Information</h3>
+
+                    <div class="contact-item">
+                        <span class="contact-icon">✉</span>
+
+                        <div>
+                            <strong>Email</strong>
+
+                            <a href="mailto:troyzydelpangaluan@gmail.com">
+                                troyzydelpangaluan@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-icon">f</span>
+
+                        <div>
+                            <strong>Facebook</strong>
+
+                            <a
+                                href="https://www.facebook.com/share/1MNp5goCiy/?mibextid=wwXIfr"
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                Visit my Facebook profile
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-icon">⌖</span>
+
+                        <div>
+                            <strong>Location</strong>
+
+                            <p>
+                                Inalad, Siaton, Negros Oriental
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">↗</div>
+
+                    <h3>Thank You for Visiting!</h3>
+
+                    <p>
+                        Thank you for taking the time to explore
+                        my portfolio. I look forward to learning
+                        more, gaining experience, and creating
+                        useful technology solutions.
+                    </p>
+
+                    <p class="contact-message">
+                        Feel free to send me an email or connect
+                        with me on Facebook.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a
+                            class="btn btn-primary"
+                            href="mailto:troyzydelpangaluan@gmail.com">
+                            Send an Email
+                        </a>
+
+                        <a
+                            class="btn btn-outline"
+                            href="https://www.facebook.com/share/1MNp5goCiy/?mibextid=wwXIfr"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Facebook
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+ 
+    <footer>
+        <p>
+            © <span id="year"></span> Troy Zydel E. Pangaluan
+        </p>
+
+        <p>
+            Designed with <span>♥</span> and a passion for technology.
+        </p>
+    </footer>
+
+
+    <script>
+        const pages = document.querySelectorAll(".page");
+        const navButtons = document.querySelectorAll(".nav-link");
+
+        // Show only the selected page.
+        function showPage(pageId, updateHash = true) {
+            const selectedPage = document.getElementById(pageId);
+
+            if (
+                !selectedPage ||
+                !selectedPage.classList.contains("page")
+            ) {
+                return;
+            }
+
+            pages.forEach(function(page) {
+                const isActive = page.id === pageId;
+
+                page.classList.toggle("active", isActive);
+                page.hidden = !isActive;
+            });
+
+            navButtons.forEach(function(button) {
+                const isActive = button.dataset.page === pageId;
+
+                button.classList.toggle("active", isActive);
+
+                if (isActive) {
+                    button.setAttribute("aria-current", "page");
+                } else {
+                    button.removeAttribute("aria-current");
+                }
+            });
+
+            if (updateHash) {
+                history.replaceState(null, "", "#" + pageId);
+            }
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        // Navigation menu buttons.
+        navButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                showPage(button.dataset.page);
+            });
+        });
+
+        // Buttons that navigate to another section.
+        document.querySelectorAll("[data-go]").forEach(function(button) {
+            button.addEventListener("click", function() {
+                showPage(button.dataset.go);
+            });
+        });
+
+        // Clicking the logo returns to Home.
+        document.querySelectorAll("[data-page-link]").forEach(function(link) {
+            link.addEventListener("click", function(event) {
+                event.preventDefault();
+                showPage(link.dataset.pageLink);
+            });
+        });
+
+        // Support browser back and forward navigation.
+        window.addEventListener("hashchange", function() {
+            const pageId = window.location.hash.substring(1) || "home";
+            showPage(pageId, false);
+        });
+
+        // Automatically update the copyright year.
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Display Home initially, or the page in the URL.
+        const initialPage =
+            window.location.hash.substring(1) || "home";
+
+        showPage(initialPage, false);
+    </script>
+
+</body>
+</html>
